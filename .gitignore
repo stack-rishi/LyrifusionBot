@@ -1,0 +1,45 @@
+# =============================
+# SECRETS — NEVER COMMIT THESE
+# =============================
+token.txt
+groq_key.txt
+cookies.txt
+
+# Push helper script (contains GitHub PAT)
+push*.py
+
+# =============================
+# RUNTIME / TEMP FILES
+# =============================
+downloads/
+covers/
+processed/
+bot.log
+*.log
+
+# bgutil PO Token server (auto-cloned at startup)
+bgutil-ytdlp-pot-provider*/
+
+# Node.js runtime (auto-downloaded at startup)
+node-v*/
+node_bin/
+
+# =============================
+# PYTHON
+# =============================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+.env
+
+# =============================
+# OS / EDITOR JUNK
+# =============================
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
