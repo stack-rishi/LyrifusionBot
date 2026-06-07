@@ -64,19 +64,30 @@ pip install -r requirements.txt
 
 ### Configuration
 
-Create these three files in the project root:
+Copy the example env file and fill in your secrets:
 
 ```bash
-# Your Telegram bot token from @BotFather
-echo "YOUR_BOT_TOKEN_HERE" > token.txt
+cp .env.example .env
+```
 
-# Your Groq API key
-echo "YOUR_GROQ_KEY_HERE" > groq_key.txt
+Edit `.env` with your values:
+
+```env
+# Your Telegram bot token from @BotFather
+TELEGRAM_BOT_TOKEN=your_token_here
+
+# Your Groq API key from https://console.groq.com
+GROQ_API_KEY=your_groq_key_here
+
+# Path to YouTube cookies file (optional)
+COOKIES_FILE=cookies.txt
 ```
 
 Export your YouTube cookies to `cookies.txt` in Netscape format using the [Get cookies.txt LOCALLY](https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc) Chrome extension while logged into your Google account.
 
 > ⚠️ **Important:** Cookies expire over time. If YouTube downloads start failing, re-export `cookies.txt`.
+>
+> 💡 **Legacy support:** If you prefer, you can still use `token.txt` and `groq_key.txt` files instead of `.env` — the bot checks both.
 
 ### Run
 
@@ -105,6 +116,8 @@ See [DOCUMENTATION.md](DOCUMENTATION.md) for a full AWS EC2 (Amazon Linux 2023) 
 ```
 .
 ├── bot.py              # Main bot — all logic lives here
+├── .env.example        # Template for environment variables (safe to share)
+├── .env                # YOUR secrets — never committed (gitignored)
 ├── requirements.txt    # Python dependencies
 ├── .gitignore          # Prevents secrets from being committed
 ├── README.md           # This file
@@ -112,7 +125,7 @@ See [DOCUMENTATION.md](DOCUMENTATION.md) for a full AWS EC2 (Amazon Linux 2023) 
 └── documentation.txt   # Plain-text copy of documentation
 ```
 
-> 🔒 `token.txt`, `groq_key.txt`, and `cookies.txt` are **gitignored** and must be created manually.
+> 🔒 `.env`, `token.txt`, `groq_key.txt`, and `cookies.txt` are **gitignored** and never pushed to GitHub.
 
 ---
 
@@ -126,12 +139,13 @@ See [DOCUMENTATION.md](DOCUMENTATION.md) for a full AWS EC2 (Amazon Linux 2023) 
 
 ---
 
-## 🔧 Environment Variables (Alternative to .txt files)
+## 🔧 Environment Variables
 
-| Variable | Description |
-|---|---|
-| `TELEGRAM_BOT_TOKEN` | Telegram bot token |
-| `GROQ_API_KEY` | Groq AI API key |
+| Variable | Description | Required |
+|---|---|---|
+| `TELEGRAM_BOT_TOKEN` | Telegram bot token from @BotFather | ✅ Yes |
+| `GROQ_API_KEY` | Groq AI API key from console.groq.com | ✅ Yes |
+| `COOKIES_FILE` | Path to YouTube cookies file (Netscape format) | Optional |
 
 ---
 
