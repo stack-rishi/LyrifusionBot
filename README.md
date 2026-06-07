@@ -1,5 +1,9 @@
 <div align="center">
 
+<img src="lyrifusion_banner.png" alt="LyriFusion Banner" width="100%" />
+
+<br/><br/>
+
 <img src="https://img.shields.io/badge/Python-3.11+-blue?style=for-the-badge&logo=python" />
 <img src="https://img.shields.io/badge/Telegram-Bot-26A5E4?style=for-the-badge&logo=telegram" />
 <img src="https://img.shields.io/badge/Powered%20By-yt--dlp-red?style=for-the-badge" />
@@ -132,6 +136,7 @@ See [DOCUMENTATION.md](DOCUMENTATION.md) for a full AWS EC2 (Amazon Linux 2023) 
 ├── Dockerfile          # Container build definition
 ├── docker-compose.yml  # Docker service composition
 ├── LICENSE             # MIT License
+├── lyrifusion_banner.png # Project banner image
 ├── .env.example        # Template for environment variables (safe to share)
 ├── .env                # YOUR secrets — never committed (gitignored)
 ├── requirements.txt    # Python dependencies
