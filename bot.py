@@ -3,6 +3,10 @@ from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_applicati
 import os
 import logging
 import asyncio
+from dotenv import load_dotenv
+
+# Load environment variables from .env file (secrets live here, NOT in .txt files)
+load_dotenv()
 import requests
 from pytubefix import Search, YouTube
 import yt_dlp
@@ -198,10 +202,12 @@ class Config:
     def __init__(self):
         self.TOKEN = self.get_token()
         self.GROQ_API_KEY = self.get_groq_key()
+        self.COOKIES_FILE = self.get_cookies_file()
         self.ITUNES_API = "https://itunes.apple.com/search"
         self.DEEZER_API = "https://api.deezer.com/search"
 
     def get_token(self):
+        # Priority: .env → token.txt fallback
         token = os.getenv('TELEGRAM_BOT_TOKEN')
         if token:
             return token
@@ -209,10 +215,11 @@ class Config:
             with open('token.txt', 'r') as f:
                 return f.read().strip()
         except FileNotFoundError:
-            logging.error("Missing bot token. Create token.txt file.")
+            logging.error("Missing bot token. Set TELEGRAM_BOT_TOKEN in .env or create token.txt")
             return None
 
     def get_groq_key(self):
+        # Priority: .env → groq_key.txt fallback
         key = os.getenv('GROQ_API_KEY')
         if key:
             return key
@@ -221,6 +228,13 @@ class Config:
                 return f.read().strip()
         except FileNotFoundError:
             return None
+
+    def get_cookies_file(self):
+        # Priority: .env → cookies.txt fallback
+        path = os.getenv('COOKIES_FILE', 'cookies.txt')
+        if os.path.exists(path):
+            return path
+        return None
 
 from aiogram.client.session.aiohttp import AiohttpSession
 
@@ -1610,7 +1624,7 @@ async def download_audio(query):
             'socket_timeout': 30,
             'retries': 2,
             'source_address': '0.0.0.0',
-            'cookiefile': 'cookies.txt',
+            'cookiefile': config.COOKIES_FILE,
             'logger': YTDLLogger(),
             'http_headers': {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
