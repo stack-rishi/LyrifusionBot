@@ -1,0 +1,10 @@
+services:
+  bot:
+    build: .
+    container_name: lyrifusion-bot
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      # Optional: Mount cookies.txt from host to container to preserve sessions/credentials
+      - ./cookies.txt:/app/cookies.txt
