@@ -93,16 +93,27 @@ Export your YouTube cookies to `cookies.txt` in Netscape format using the [Get c
 
 ### Run
 
+#### Option A: Manual Setup (Local/VPS)
 ```bash
 python3.11 bot.py
 ```
 
 For 24/7 deployment on a VPS:
-
 ```bash
 tmux new -s bot
 python3.11 bot.py
 # Detach: Ctrl+B then D
+```
+
+#### Option B: Docker Setup (Recommended)
+If you have Docker and Docker Compose installed, you can build and run the entire stack (including Python, Node.js, and FFmpeg) in one command:
+```bash
+docker compose up --build -d
+```
+
+To view logs:
+```bash
+docker compose logs -f
 ```
 
 ---
@@ -118,6 +129,9 @@ See [DOCUMENTATION.md](DOCUMENTATION.md) for a full AWS EC2 (Amazon Linux 2023) 
 ```
 .
 ├── bot.py              # Main bot — all logic lives here
+├── Dockerfile          # Container build definition
+├── docker-compose.yml  # Docker service composition
+├── LICENSE             # MIT License
 ├── .env.example        # Template for environment variables (safe to share)
 ├── .env                # YOUR secrets — never committed (gitignored)
 ├── requirements.txt    # Python dependencies
