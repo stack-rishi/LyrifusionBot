@@ -11,6 +11,8 @@
 
 *Sends AI-tagged MP3 files with cover art, artist metadata, and embedded lyrics directly in Telegram.*
 
+[![Try the Bot](https://img.shields.io/badge/Try%20the%20Bot-Telegram-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/LyriFusionBot)
+
 </div>
 
 ---
