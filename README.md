@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="lyrifusion_banner.png" alt="LyriFusion Banner" width="100%" />
+<img src="lyrifusion_banner.gif" alt="LyriFusion Banner" width="100%" />
 
 <br/><br/>
 
@@ -136,7 +136,7 @@ See [DOCUMENTATION.md](DOCUMENTATION.md) for a full AWS EC2 (Amazon Linux 2023) 
 ├── Dockerfile          # Container build definition
 ├── docker-compose.yml  # Docker service composition
 ├── LICENSE             # MIT License
-├── lyrifusion_banner.png # Project banner image
+├── lyrifusion_banner.gif # Project banner image
 ├── .env.example        # Template for environment variables (safe to share)
 ├── .env                # YOUR secrets — never committed (gitignored)
 ├── requirements.txt    # Python dependencies
